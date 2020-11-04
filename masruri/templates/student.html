@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+
+        <h1>Data Student</h1>
+        <table class="table table-bordered table-transparent table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Lengkap</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Foto</th>
+                    <th>Kelas</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mhs in student %}
+                <tr>
+                    <td scope="row">{{ mhs.roll_no }}</td>
+                    <td>{{ mhs.full_name }}</td>
+                    {% if mhs.gender == 'M' %}
+                    <td>Laki-Laki</td>
+                    {% else %}
+                    <td>Perempuan</td>
+                    {% endif %}
+                    <td><img src="{{ mhs.photo.url }}" width="50" height="50"></td>
+                    <td>{{ mhs.course }}</td>
+                    <td>{{ mhs.grade }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
