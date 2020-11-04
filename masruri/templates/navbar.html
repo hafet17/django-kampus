@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    {% load static %}
+    <img src="{% static 'img/pusdikom.png' %}" width="50px">
+    <a class="navbar-brand text-white" href="#">Django App </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a class=" nav-link text-white {% if menu == 'home'  %} aktif {% endif %}" href="{% url 'home' %}">Home
+                <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-white {% if menu == 'student'  %} aktif {% endif %}"
+                href="{% url 'student' %}">Student</a>
+            <a class="nav-link text-white {% if menu == 'products'  %} aktif {% endif %}"
+                href="{% url 'products' %}">Products</a>
+            <a class="nav-link text-white {% if menu == 'custumer'  %} aktif {% endif %}"
+                href="{% url 'custumer' %}">Customer</a>
+        </div>
+    </div>
+</nav>
+
+<style>
+    .aktif {
+        background: powderblue;
+    }
+</style>
