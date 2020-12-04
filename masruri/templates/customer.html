@@ -15,15 +15,15 @@
             <div class="card card-body">
                 <h5>Contact Information</h5>
                 <hr>
-                <p>Email: </p>
-                <p>Phone: </p>
+                <p>Email: {{ custumer.email }}</p>
+                <p>Phone: {{ custumer.phone }} </p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card card-body">
                 <h5>Total Orders</h5>
                 <hr>
-                <h1 style="text-align: center;padding: 10px"></h1>
+                <h1 style="text-align: center;padding: 10px">{{ total_custumer }}</h1>
             </div>
         </div>
     </div>
@@ -50,6 +50,16 @@
                         <th>Update</th>
                         <th>Remove</th>
                     </tr>
+                    {% for tampil_order_custumer in order_custumer %}
+                    <tr>
+                        <td>{{ tampil_order_custumer.product }}</td>
+                        <td>{{ tampil_order_custumer.product.category }}</td>
+                        <td>{{ tampil_order_custumer.date_created|date:"l, d N Y" }}</td>
+                        <td>{{ tampil_order_custumer.status }}</td>
+                        <td><a href="" class="btn btn-success">Update</a></td>
+                        <td><a href="" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>
