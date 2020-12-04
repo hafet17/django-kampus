@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{% load humanize %}
 {% block content %}
 <div class="container-fluid">
     <h2 class="text-center my-3">{{ judul }}</h2>
@@ -9,11 +10,14 @@
             </div>
             <div class="card card-body">
                 <table class="table">
+                    {% for dataproduct in product %}
                     <tr>
-                        <th>Product</th>
-                        <th>Category</th>
-                        <th>Price</th>
+                        <td>{{ dataproduct.name }}</td>
+                        <td>{{ dataproduct.category }}</td>
+                        <td>Rp. {{ dataproduct.price|intcomma}}</td>
                     </tr>
+                    {% endfor %}
+
                 </table>
             </div>
         </div>
