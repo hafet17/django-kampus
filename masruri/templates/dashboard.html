@@ -14,11 +14,20 @@
                 <a class="btn btn-primary btn-sm btnblock" href="">Create Customer</a>
                 <table class="table table-sm">
                     <tr>
-                        <th></th>
+                        <th>Action</th>
                         <th>Customer</th>
-                        <th>Orders</th>
+                        <th>Phone</th>
                     </tr>
+                    {% for datacustumer in custumer %}
+                    <tr>
+                        <td><a href="{% url 'custumer' datacustumer.id %}"
+                                class="btn btn-outline-success btn-sm">View</a></td>
+                        <td>{{ datacustumer.name }}</td>
+                        <td>{{ datacustumer.phone }}</td>
+                    </tr>
+                    {% endfor %}
                 </table>
+
             </div>
         </div>
         <div class="col-md-7">
@@ -34,6 +43,18 @@
                         <th>Update</th>
                         <th>Remove</th>
                     </tr>
+                    {% for dataorder in order %}
+                    <tr>
+                        <td>{{ dataorder.product }}</td>
+                        <td>{{ dataorder.date_created|date:"l, d N Y" }}
+                            {{ dataorder.date_created|time:"H:i:s" }}
+                        </td>
+                        <td>{{ dataorder.status }}</td>
+                        <td><a href="" class="btn btn-success">Update</a></td>
+                        <td><a href="" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
                 </table>
             </div>
         </div>
