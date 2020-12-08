@@ -56,8 +56,11 @@
                         <td>{{ tampil_order_custumer.product.category }}</td>
                         <td>{{ tampil_order_custumer.date_created|date:"l, d N Y" }}</td>
                         <td>{{ tampil_order_custumer.status }}</td>
-                        <td><a href="" class="btn btn-success">Update</a></td>
-                        <td><a href="" class="btn btn-danger">Delete</a></td>
+                        <td><a href="{% url 'update_order' tampil_order_custumer.id %}"
+                                class="btn btn-success">Update</a></td>
+                        <td><a href="{% url 'delete_order' tampil_order_custumer.id %}"
+                                class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>
