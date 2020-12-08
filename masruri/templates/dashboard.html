@@ -1,5 +1,7 @@
 {% extends "main.html" %}
 {% block content %}
+{% load sweetify %}
+{% sweetify %}
 {% include "status.html" %}
 
 <div class="container-fluid">
@@ -34,7 +36,7 @@
             <h5>LAST 5 ORDERS</h5>
             <hr>
             <div class="card card-body">
-                <a class="btn btn-primary btn-sm btnblock" href="">Create Order</a>
+                <a class="btn btn-primary btn-sm btnblock" href="{% url 'create_order' %}">Create Order</a>
                 <table class="table table-sm">
                     <tr>
                         <th>Product</th>
@@ -50,8 +52,8 @@
                             {{ dataorder.date_created|time:"H:i:s" }}
                         </td>
                         <td>{{ dataorder.status }}</td>
-                        <td><a href="" class="btn btn-success">Update</a></td>
-                        <td><a href="" class="btn btn-danger">Delete</a></td>
+                        <td><a href="{% url 'update_order' dataorder.id %}" class="btn btn-success">Update</a></td>
+                        <td><a href="{% url 'delete_order' dataorder.id %}" class="btn btn-danger">Delete</a></td>
                     </tr>
                     {% endfor %}
                 </table>
