@@ -33,13 +33,13 @@ def home(request):
 
 def products(request):
 
-    search_product = request.GET.get('search')
+    search_product = request.GET.get('q')
 
     if search_product:
-        product = Product.objects.filter(Q(name=search_product))
+        product = Product.objects.filter(name=search_product)
     else:
         # If not searched, return default posts
-        product = Product.objects.all().order_by("date_created")
+        product = Product.objects.all().order_by("-date_created")
 
     paginator = Paginator(product, 6)
     page_number = request.GET.get('page')
@@ -48,7 +48,7 @@ def products(request):
     data = {
         'judul': 'Halaman Produk',
         'menu': 'products',
-        'page_obj': product
+        'page_obj': page_obj
     }
     return render(request, 'product/index.html', data)
 
