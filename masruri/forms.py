@@ -28,8 +28,8 @@ class ProductForm(ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
-            'description': forms.TextInput(attrs={'class': 'form-control'}),
-            'tag': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'tag': forms.SelectMultiple(attrs={'class': 'form-control'}),
         }
         labels = {
             'name': 'Nama Produk',
