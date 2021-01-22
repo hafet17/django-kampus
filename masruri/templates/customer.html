@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{% load widget_tweaks %}
 {% block content %}
 <div class="container-fluid">
     <h2 class="text-center my-3">{{ judul }}</h2>
@@ -31,9 +32,33 @@
     <div class="row">
         <div class="col">
             <div class="card card-body">
-                <form method="get">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </form>
+              <form method="get">
+             <div class="row">
+             <div class="col">
+             Product:
+             {{ filter_data_order.form.product | add_class:"form-control"}}
+             </div>
+             <div class="col">
+             Status:
+             {{ filter_data_order.form.status | add_class:"form-control"}}
+             </div>
+                 <div class="col"> note:
+                {{ filter_data_order.form.note | add_class:"form-control"}}
+                </div>
+                 <div class="col">
+            From Date:
+             {{ filter_data_order.form.tglmulai | add_class:"formcontrol" |attr:"type:date"}}
+             </div>
+            <div class="col">
+            Until Date:
+             {{ filter_data_order.form.tglakhir | add_class:"formcontrol" |attr:"type:date"}}
+            </div>
+
+            <div class="col mt-4">
+            <button class="btn btn-primary" type="submit">Search</button>
+             </div>
+             </div>
+            </form>
             </div>
         </div>
     </div>
@@ -47,6 +72,7 @@
                         <th>Category</th>
                         <th>Date Orderd</th>
                         <th>Status</th>
+                        <th>Note</th>
                         <th>Update</th>
                         <th>Remove</th>
                     </tr>
@@ -56,6 +82,7 @@
                         <td>{{ tampil_order_custumer.product.category }}</td>
                         <td>{{ tampil_order_custumer.date_created|date:"l, d N Y" }}</td>
                         <td>{{ tampil_order_custumer.status }}</td>
+                         <td>{{ tampil_order_custumer.note }}</td>
                         <td><a href="{% url 'update_order' tampil_order_custumer.id %}"
                                 class="btn btn-success">Update</a></td>
                         <td><a href="{% url 'delete_order' tampil_order_custumer.id %}"
@@ -64,6 +91,28 @@
                     </tr>
                     {% endfor %}
                 </table>
+            <hr/>
+            <nav>
+             <ul class="pagination justify-content-center">
+           <li class="page-item {% if not next %} disabled {% endif %}">
+            <a class="page-link" href="{{ next }}">Next</a></li>
+             {% for n in halaman_order_custumer.paginator.page_range %}
+             {% if halaman_order_custumer.number == n %}
+             <li class="page-item active" aria>
+             <span class="page-link">
+             {{ n }}
+             <span class="sr-only">(current)</span>
+             </span>
+             </li>
+            {% elif n > halaman_order_custumer.number|add:halaman_order_custumer.number|add:3 %}
+             <li class="page-item"><a class="pagelink" href="?halaman={{ n }}">{{ n }}</a></li>
+             {% endif %}
+            {% endfor %}
+            <li class="page-item {% if not next %} disabled {% endif %}">
+            <a class="page-link" href="{{ next }}">Next</a></li>
+             </li>
+             </ul>
+            </nav>
             </div>
         </div>
     </div>
