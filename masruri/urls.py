@@ -1,16 +1,18 @@
 from django.urls import path
-from . import views
+from  . controllers import dashboard,auth,custumer,product,order
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('products/', views.products, name='products'),
-    path('custumer/<str:pk>', views.custumer, name='custumer'),
-    path('student/', views.student, name='student'),
-    path('create_order/', views.createOrder, name='create_order'),
-    path('update_order/<str:pk>', views.updateOrder, name='update_order'),
-    path('delete_order/<str:pk>', views.deleteOrder, name='delete_order'),
-    path('create_product/', views.createProducts, name='create_product'),
-    path('update_product/<str:pk>', views.updateProducts, name='update_product'),
-    path('delete_product/<str:pk>', views.deleteProducts, name='delete_product'),
-    # path('search_product/', views.searchProducts, name='search_product'),
+    path('', dashboard.home, name='home'),
+    path('products/', product.index, name='products'),
+    path('create_product/', product.createProducts, name='create_product'),
+    path('update_product/<str:pk>', product.updateProducts, name='update_product'),
+    path('delete_product/<str:pk>', product.deleteProducts, name='delete_product'),
+    path('custumer/<str:pk>', custumer.index, name='custumer'),
+    path('create_order/', order.createOrder, name='create_order'),
+    path('update_order/<str:pk>', order.updateOrder, name='update_order'),
+    path('delete_order/<str:pk>', order.deleteOrder, name='delete_order'),
+    path('register/', auth.registerPage, name='register'),
+    path('login/', auth.loginPage, name='login'),
+    path('logout/', auth.logoutPage, name='logout'),
+    path('user/', auth.userPage, name='user-page'),
 ]
