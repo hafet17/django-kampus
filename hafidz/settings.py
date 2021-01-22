@@ -53,7 +53,9 @@ INSTALLED_APPS = [
     'masruri',
     'django.contrib.humanize',
     'crispy_forms',
-    'sweetify'
+    'django_filters',
+    'sweetify',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
