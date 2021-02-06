@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from masruri.forms import *
+from masruri.forms import Order, OrderForm
 from masruri.decorators import tolakhalaman_ini, ijinkan_pengguna
 
 
