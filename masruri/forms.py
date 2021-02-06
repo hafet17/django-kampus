@@ -41,8 +41,17 @@ class ProductForm(ModelForm):
             'tag': 'Tag',
         }
 
+
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
+
     class Meta:
         model = User
-        fields= ['username','email','password1','password2']
+        fields = ['username', 'email', 'password1', 'password2']
+
+
+class CustumerForm(ModelForm):
+    class Meta:
+        model = Custumer
+        fields = '__all__'
+        exclude = ['user']
