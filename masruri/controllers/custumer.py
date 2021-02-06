@@ -41,3 +41,19 @@ def index(request, pk):
         'next': url_next
     }
     return render(request, 'customer.html', data)
+
+
+@login_required(login_url='login')
+@ijinkan_pengguna(yang_diizinkan=['custumer'])
+def accountSetting(request):
+    datacustumer = request.user.custumer
+    form = CustumerForm(instance=datacustumer)
+    if request.method == 'POST':
+        form = CustumerForm(request.POST, request.FILES, instance=datacustumer)
+        if form.is_valid:
+            form.save()
+    context = {
+        'menu': 'settings',
+        'formcustumer': form
+    }
+    return render(request, 'auth/account.html', context)
