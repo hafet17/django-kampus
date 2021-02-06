@@ -5,7 +5,7 @@ from masruri.decorators import tolakhalaman_ini, ijinkan_pengguna, pilihan_login
 
 
 @login_required(login_url='login')
-@ijinkan_pengguna(yang_diizinkan=['admin'])
+# @ijinkan_pengguna(yang_diizinkan=['admin'])
 @pilihan_login
 def home(request):
 
